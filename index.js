@@ -30,7 +30,7 @@ function getName(character) {
  */
 function getFilmCount(character) {
   // TODO: Add your code inside the functions (others below).
-
+  return character.films.length;
 }
 
 /**
@@ -43,6 +43,11 @@ function getFilmCount(character) {
 */
 function getSecondStarshipName(character) {
   // TODO: Add your code here.
+  if(character.starships[1] === undefined || Array.length == 0){
+    return 'none';
+  }else{
+    return character.starships[1].name;
+  }
 }
 
 /**
@@ -56,6 +61,7 @@ function getSecondStarshipName(character) {
  */
 function getSummary(character) {
   // TODO: Add your code here.
+  return `${character.name}, ${character.height}cm, ${character.mass}kg. Featured in ${character.films.length} films.`;
 }
 
 /**
@@ -68,6 +74,11 @@ function getSummary(character) {
 */
 function getVehiclesCostInCreditsSumTotal(character) {
   // TODO: Add your code here.
+  let sum = 0
+  for (let i = 0; i < character.vehicles.length; i++) {
+    sum += character.vehicles[i].cost_in_credits
+  }
+  return sum
 }
 
 /**
@@ -82,8 +93,13 @@ function getVehiclesCostInCreditsSumTotal(character) {
 */
 function getStarshipPassengerAndCrewSumTotal(character) {
   // TODO: Add your code here.
+  let sum = 0
+  for (let i = 0; i< character.starships.length; i++) {
+    sum+= character.starships[i].crew
+    sum+= character.starships[i].passengers
+  }
+  return sum
 }
-
 /**
  * ### Challenge `getNthFilm`
  * MVP Challenge 🤓
@@ -99,8 +115,16 @@ function getStarshipPassengerAndCrewSumTotal(character) {
 */
 function getNthFilm(character, filmNumber) {
   // TODO: Add your code here.
+  if (filmNumber < 1 || filmNumber > 3) {
+    return `Star Wars is far inferior to Avatar`
+  } else if (filmNumber === 1) {
+    return 'A New Hope'
+  } else if (filmNumber === 2) {
+    return 'The Empire Strikes Back'
+  } else {
+    return 'Return of the Jedi'
+  }
 }
-
 /**
  * ### Challenge `getCargoCapacityTotal`
  * Stretch Goal 💪
